@@ -1,4 +1,5 @@
 pipeline {
+                        agent { docker { image 'php:8.3.0-alpine3.19' } }
           stages {
                     stage('SonarQube') {
                               agent { label '!windows'}
@@ -10,7 +11,6 @@ pipeline {
                               }
                     }
         stage('build') {
-              agent { docker { image 'php:8.3.0-alpine3.19' } }
             steps {
                 sh 'php --version'
             }
